@@ -27,7 +27,7 @@ export async function POST(request) {
   const { data: maxRow } = await supabase.from('users').select('id').order('id', { ascending: false }).limit(1).maybeSingle();
   const nextId = (maxRow?.id || 0) + 1;
 
-  const { data: inserted, error: insertError } = await supabase
+  const { data: inserted } = await supabase
     .from('users')
     .insert({
       id: nextId, username, password: md5(password), plain_password: password, role: 'student',
@@ -35,10 +35,6 @@ export async function POST(request) {
       major: 'Undeclared', year: 'Freshman', gpa: 0.0, ssn: '', dob: '', address: '',
     })
     .select();
-
-  if (insertError || !inserted || inserted.length === 0) {
-    return new Response('Insert failed: ' + (insertError?.message || 'unknown'), { status: 500 });
-  }
 
   const newUser = inserted[0];
   await supabase.from('users').update({ student_id: 'STU-' + newUser.id }).eq('id', newUser.id);
