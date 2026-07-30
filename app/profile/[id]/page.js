@@ -5,15 +5,17 @@ import { notFound, redirect } from 'next/navigation';
 const roleLabel = (role) => ({ admin: 'Registrar', vc: 'Vice Chancellor', it_staff: 'IT Staff', lecturer: 'Lecturer', student: 'Student' })[role] || role;
 const roleBadge = (role) => role === 'admin' || role === 'vc' ? 'badge-admin' : role === 'it_staff' ? 'badge-it' : role === 'lecturer' ? 'badge-lecturer' : 'badge-student';
 
-export default async function ProfilePage({ params }) {
+export default async function ProfilePage({ params, searchParams }) {
   const currentUser = await getCurrentUser();
   if (!currentUser) redirect('/login');
 
   const { data: target } = await supabase.from('users').select('*').eq('id', params.id).maybeSingle();
   if (!target) notFound();
+  const flag = searchParams?.flag;
 
   return (
     <div className="container" style={{ paddingTop: 30, paddingBottom: 40 }}>
+      {flag && <div style={{ color: '#2ecc71', fontWeight: 600, marginBottom: 12 }}>{flag}</div>}
       <h1>{target.full_name}</h1>
       <div className="card card-accent">
         <table><tbody>

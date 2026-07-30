@@ -11,6 +11,7 @@ export default function NavBar({ user }) {
               <span className="nav-user">{user.full_name || user.username}</span>
               <Link href="/dashboard">Dashboard</Link>
               <Link href="/courses">Courses</Link>
+              <Link href="/challenges">Challenges</Link>
               <Link href={'/profile/' + user.id}>Profile</Link>
               {(user.role === 'admin' || user.role === 'vc') && <Link href="/admin">Admin</Link>}
               {user.role === 'it_staff' && <Link href="/it/dashboard">IT Panel</Link>}

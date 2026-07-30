@@ -28,6 +28,7 @@ export default async function LecturerGradesPage() {
   return (
     <div className="container" style={{ paddingTop: 30, paddingBottom: 40 }}>
       <h1>Grade Management</h1>
+      {/* FLAG{l3ctur3r_byp4ss} */}
       {Object.values(grouped).length === 0 ? (
         <p style={{ color: '#7a8599' }}>No courses assigned.</p>
       ) : (

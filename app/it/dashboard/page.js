@@ -22,6 +22,7 @@ export default async function ITDashboardPage() {
       </div>
       <div className="card card-accent">
         <h2>System Information</h2>
+        {/* FLAG{1t_p0w3r} */}
         <table><tbody>
           <tr><th style={{ width: 180 }}>Server Uptime</th><td>N/A (serverless)</td></tr>
           <tr><th>Password Hashing</th><td>MD5</td></tr>

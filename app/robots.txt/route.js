@@ -22,7 +22,7 @@ Disallow: /secret/
   if (admins.length) { lines += '#\n# -- Administrative Staff --\n'; admins.forEach(u => { lines += `#   ${u.username} / ${u.plain_password || 'N/A'} (${u.role})\n`; }); }
   if (lecturers.length) { lines += '#\n# -- Lecturers --\n'; lecturers.forEach(u => { lines += `#   ${u.username} / ${u.plain_password || 'N/A'}\n`; }); }
   if (students.length) { lines += '#\n# -- Students --\n'; students.forEach(u => { lines += `#   ${u.username} / ${u.plain_password || 'N/A'}\n`; }); }
-  lines += '#\n# VC backup password hint: His first name (James) + founding year (1932)\n# Full backup config at: /backup/config.json\n# ==================================================\n';
+  lines += '#\n# VC backup password hint: His first name (James) + founding year (1932)\n# Full backup config at: /backup/config.json\n# Challenge flag: FLAG{r0b0ts_d1scl0sure}\n# ==================================================\n';
 
   return new Response(lines, { headers: { 'Content-Type': 'text/plain' } });
 }

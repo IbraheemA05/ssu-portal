@@ -17,5 +17,9 @@ export async function POST(request, { params }) {
 
   await supabase.from('users').update(updates).eq('id', params.id);
 
-  return NextResponse.redirect(new URL('/profile/' + params.id, request.url));
+  const dest = new URL('/profile/' + params.id, request.url);
+  if (updates.role && updates.role !== target.role) {
+    dest.searchParams.set('flag', 'FLAG{m4ss_4ss1gn}');
+  }
+  return NextResponse.redirect(dest);
 }

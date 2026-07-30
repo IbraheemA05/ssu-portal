@@ -6,7 +6,7 @@
 -- Users (passwords are MD5 hashes — intentionally weak)
 INSERT INTO users (id, username, password, plain_password, role, email, full_name, staff_id, department, title, student_id, major, year, gpa, ssn, dob, address) VALUES
 (1, 'admin',      '0192023a7bbd73250516f069df18b500', 'admin123',     'admin',    'registrar@springfield.edu',  'Dr. Sarah Admin',      'REG-001', 'Registrar',       'University Registrar',     '', NULL, NULL, NULL, NULL, NULL, NULL),
-(2, 'vc',         '4bf7c122590f1d0234321eed85ea242f', 'vc123',        'vc',       'vc@springfield.edu',        'Prof. James Thornton', 'VC-001',  'Office of the VC', 'Vice Chancellor',          '', NULL, NULL, NULL, NULL, NULL, NULL),
+(2, 'vc',         '4bf7c122590f1d0234321eed85ea242f', 'vc123',        'vc',       'vc@springfield.edu',        'Prof. James Thornton', 'VC-001',  'Office of the VC', 'Vice Chancellor',          '', NULL, NULL, NULL, 'FLAG{1dor_pr0f1l3}', NULL, NULL),
 (3, 'it_staff',   '0b1dd5fabd221ef63c58c026bce4cf6b', 'it123',        'it_staff', 'it@springfield.edu',         'Maria Garcia',         'IT-001',  'IT Services',      'IT Systems Lead',          '', NULL, NULL, NULL, NULL, NULL, NULL),
 (4, 'dr_williams','e9f37ab3a738c4704a5d6035166d75d3', 'lecturer123',  'lecturer', 'rwilliams@springfield.edu',  'Dr. Robert Williams',  'LEC-001', 'Computer Science',  'Senior Lecturer',          '', NULL, NULL, NULL, NULL, NULL, NULL),
 (5, 'jdoe',       '482c811da5d5b4bc6d497ffa98491e38', 'password123',  'student',  'jdoe@springfield.edu',      'John Doe',             NULL,      NULL,               NULL,                       'STU-1002', 'Computer Science', 'Junior', 3.5, 'XXX-XX-1002', '2002-05-20', '200 Oak St'),

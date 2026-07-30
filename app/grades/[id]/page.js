@@ -10,10 +10,12 @@ export default async function GradesPage({ params }) {
   if (!student) notFound();
 
   const { data: enrolled } = await supabase.from('enrollments').select('*, courses(*)').eq('student_id', student.id);
+  const isTarget = parseInt(params.id) === 6;
 
   return (
     <div className="container" style={{ paddingTop: 30, paddingBottom: 40 }}>
       <h1>Grade Report</h1>
+      {isTarget && <div style={{ color: '#2ecc71', fontWeight: 600, marginBottom: 12 }}>FLAG{1dor_gr4d3s}</div>}
       <div className="card card-accent">
         <table><tbody>
           <tr><th style={{ width: 150 }}>Student</th><td>{student.full_name} ({student.student_id})</td></tr>

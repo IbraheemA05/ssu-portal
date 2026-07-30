@@ -54,3 +54,12 @@ CREATE TABLE IF NOT EXISTS reset_tokens (
   user_id INTEGER REFERENCES users(id),
   created_at TIMESTAMPTZ DEFAULT NOW()
 );
+
+-- CTF challenge progress tracking
+CREATE TABLE IF NOT EXISTS user_flags (
+  id SERIAL PRIMARY KEY,
+  user_id INTEGER REFERENCES users(id) NOT NULL,
+  challenge_id VARCHAR(50) NOT NULL,
+  created_at TIMESTAMPTZ DEFAULT NOW(),
+  UNIQUE(user_id, challenge_id)
+);

@@ -2,7 +2,7 @@ import { supabase } from '../../../lib/supabase';
 import { getCurrentUser } from '../../../lib/getUser';
 import { notFound, redirect } from 'next/navigation';
 
-export default async function TranscriptPage({ params }) {
+export default async function TranscriptPage({ params, searchParams }) {
   const currentUser = await getCurrentUser();
   if (!currentUser) redirect('/login');
 
@@ -12,8 +12,11 @@ export default async function TranscriptPage({ params }) {
   const { data: enrolled } = await supabase.from('enrollments').select('*, courses(*)').eq('student_id', student.id);
   const totalCredits = (enrolled || []).reduce((s, e) => s + (e.courses?.credits || 0), 0);
 
+  const flag = searchParams?.flag;
+
   return (
     <div className="container" style={{ paddingTop: 30, paddingBottom: 40 }}>
+      {flag && <div style={{ color: '#2ecc71', fontWeight: 600, marginBottom: 12 }}>{flag}</div>}
       <div style={{ textAlign: 'right', marginBottom: 10, fontSize: 12, color: '#7a8a9f' }}>OFFICIAL TRANSCRIPT</div>
       <h1>Springfield State University</h1>
       <p style={{ color: '#5a6577', marginBottom: 20 }}>Academic Transcript</p>

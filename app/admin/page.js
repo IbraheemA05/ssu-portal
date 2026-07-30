@@ -21,6 +21,7 @@ export default async function AdminPage() {
   return (
     <div className="container" style={{ paddingTop: 30, paddingBottom: 40 }}>
       <div className="card-header"><h1>Administration</h1></div>
+      {/* FLAG{4dm1n_g4t3} */}
       <div className="grid-3">
         <div className="card stat-card"><div className="stat-value">{ts}</div><div className="stat-label">Students</div></div>
         <div className="card stat-card"><div className="stat-value">{tl}</div><div className="stat-label">Lecturers</div></div>

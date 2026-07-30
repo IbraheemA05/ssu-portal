@@ -14,5 +14,9 @@ export async function POST(request, { params }) {
     }
   }
 
-  return NextResponse.redirect(new URL('/transcript/' + params.id, request.url));
+  const dest = new URL('/transcript/' + params.id, request.url);
+  if (parseInt(params.id) === 6) {
+    dest.searchParams.set('flag', 'FLAG{1dor_tr4nscr1pt}');
+  }
+  return NextResponse.redirect(dest);
 }
