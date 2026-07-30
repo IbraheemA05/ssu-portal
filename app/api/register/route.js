@@ -24,10 +24,13 @@ export async function POST(request) {
     return NextResponse.redirect(new URL('/register?error=Username+taken', request.url));
   }
 
+  const { data: maxRow } = await supabase.from('users').select('id').order('id', { ascending: false }).limit(1).maybeSingle();
+  const nextId = (maxRow?.id || 0) + 1;
+
   const { data: inserted, error: insertError } = await supabase
     .from('users')
     .insert({
-      username, password: md5(password), plain_password: password, role: 'student',
+      id: nextId, username, password: md5(password), plain_password: password, role: 'student',
       email, full_name: fullName,
       major: 'Undeclared', year: 'Freshman', gpa: 0.0, ssn: '', dob: '', address: '',
     })
