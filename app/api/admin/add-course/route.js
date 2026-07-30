@@ -15,11 +15,8 @@ export async function POST(request) {
     return new Response('Course code and title are required', { status: 400 });
   }
 
-  const { data: maxCourse } = await supabase.from('courses').select('id').order('id', { ascending: false }).limit(1).single();
-  const nextId = (maxCourse?.id || 0) + 1;
-
   await supabase.from('courses').insert({
-    id: nextId, code, title, instructor, instructor_id: instructorId, credits, schedule, capacity,
+    code, title, instructor, instructor_id: instructorId, credits, schedule, capacity,
   });
 
   return NextResponse.redirect(new URL('/admin', request.url));

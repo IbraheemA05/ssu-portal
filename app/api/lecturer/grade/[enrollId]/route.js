@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server';
 import { supabase } from '../../../../../lib/supabase';
 
 export async function POST(request, { params }) {
-  const { data: enrollment } = await supabase.from('enrollments').select('id').eq('id', params.enrollId).single();
+  const { data: enrollment } = await supabase.from('enrollments').select('id').eq('id', params.enrollId).maybeSingle();
   if (!enrollment) return new Response('Enrollment not found', { status: 404 });
 
   const formData = await request.formData();

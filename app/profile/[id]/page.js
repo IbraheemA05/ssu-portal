@@ -9,7 +9,7 @@ export default async function ProfilePage({ params }) {
   const currentUser = await getCurrentUser();
   if (!currentUser) redirect('/login');
 
-  const { data: target } = await supabase.from('users').select('*').eq('id', params.id).single();
+  const { data: target } = await supabase.from('users').select('*').eq('id', params.id).maybeSingle();
   if (!target) notFound();
 
   return (

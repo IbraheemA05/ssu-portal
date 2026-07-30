@@ -6,7 +6,7 @@ export default async function TranscriptPage({ params }) {
   const currentUser = await getCurrentUser();
   if (!currentUser) redirect('/login');
 
-  const { data: student } = await supabase.from('users').select('*').eq('id', params.id).eq('role', 'student').single();
+  const { data: student } = await supabase.from('users').select('*').eq('id', params.id).eq('role', 'student').maybeSingle();
   if (!student) notFound();
 
   const { data: enrolled } = await supabase.from('enrollments').select('*, courses(*)').eq('student_id', student.id);

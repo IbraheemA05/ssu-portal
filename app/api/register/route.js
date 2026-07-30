@@ -18,24 +18,23 @@ export async function POST(request) {
     .from('users')
     .select('id')
     .eq('username', username)
-    .single();
+    .maybeSingle();
 
   if (existing) {
     return NextResponse.redirect(new URL('/register?error=Username+taken', request.url));
   }
 
-  const { data: maxUser } = await supabase.from('users').select('id').order('id', { ascending: false }).limit(1).single();
-  const nextId = (maxUser?.id || 0) + 1;
-
   const { data: newUser } = await supabase
     .from('users')
     .insert({
-      id: nextId, username, password: md5(password), plain_password: password, role: 'student',
-      email, full_name: fullName, student_id: 'STU-' + nextId,
+      username, password: md5(password), plain_password: password, role: 'student',
+      email, full_name: fullName,
       major: 'Undeclared', year: 'Freshman', gpa: 0.0, ssn: '', dob: '', address: '',
     })
     .select()
     .single();
+
+  await supabase.from('users').update({ student_id: 'STU-' + newUser.id }).eq('id', newUser.id);
 
   const token = signToken({ userId: newUser.id, role: newUser.role });
   const response = NextResponse.redirect(new URL('/dashboard', request.url));

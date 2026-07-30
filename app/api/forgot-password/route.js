@@ -10,7 +10,7 @@ export async function POST(request) {
     .from('users')
     .select('id')
     .eq('username', username)
-    .single();
+    .maybeSingle();
 
   if (!user) {
     return NextResponse.redirect(new URL('/forgot-password?error=User+not+found', request.url));

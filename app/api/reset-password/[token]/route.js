@@ -9,7 +9,7 @@ export async function POST(request, { params }) {
     .from('reset_tokens')
     .select('*')
     .eq('token', token)
-    .single();
+    .maybeSingle();
 
   if (!tokenData) {
     return new Response('Invalid or expired token.', { status: 404 });
@@ -19,7 +19,7 @@ export async function POST(request, { params }) {
     .from('users')
     .select('id')
     .eq('id', tokenData.user_id)
-    .single();
+    .maybeSingle();
 
   if (!user) {
     return new Response('User not found.', { status: 404 });

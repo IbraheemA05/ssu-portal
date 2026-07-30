@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server';
 import { supabase } from '../../../../lib/supabase';
 
 export async function POST(request, { params }) {
-  const { data: student } = await supabase.from('users').select('id').eq('id', params.id).eq('role', 'student').single();
+  const { data: student } = await supabase.from('users').select('id').eq('id', params.id).eq('role', 'student').maybeSingle();
   if (!student) return new Response('Student not found', { status: 404 });
 
   const formData = await request.formData();

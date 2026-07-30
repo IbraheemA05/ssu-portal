@@ -17,7 +17,7 @@ export async function POST(request) {
     .from('users')
     .select('*')
     .eq('username', username)
-    .single();
+    .maybeSingle();
 
   if (!user || user.password !== md5(password)) {
     return NextResponse.redirect(new URL('/login?error=Invalid+username+or+password', request.url));
