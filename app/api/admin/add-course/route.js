@@ -15,12 +15,20 @@ export async function POST(request) {
     return new Response('Course code and title are required', { status: 400 });
   }
 
-  const { data: maxRow } = await supabase.from('courses').select('id').order('id', { ascending: false }).limit(1).maybeSingle();
-  const nextId = (maxRow?.id || 0) + 1;
+  let inserted;
+  for (let attempt = 0; attempt < 3; attempt++) {
+    const { data: maxRow } = await supabase.from('courses').select('id').order('id', { ascending: false }).limit(1).maybeSingle();
+    const nextId = (maxRow?.id || 0) + 1;
 
-  await supabase.from('courses').insert({
-    id: nextId, code, title, instructor, instructor_id: instructorId, credits, schedule, capacity,
-  });
+    const { data: result } = await supabase.from('courses').insert({
+      id: nextId, code, title, instructor, instructor_id: instructorId, credits, schedule, capacity,
+    }).select();
+
+    if (result && result.length > 0) {
+      inserted = result[0];
+      break;
+    }
+  }
 
   return NextResponse.redirect(new URL('/admin', request.url));
 }

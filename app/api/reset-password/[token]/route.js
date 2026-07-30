@@ -27,6 +27,9 @@ export async function POST(request, { params }) {
 
   const formData = await request.formData();
   const newPassword = formData.get('password');
+  if (!newPassword) {
+    return new Response('Password is required.', { status: 400 });
+  }
 
   await supabase
     .from('users')
