@@ -51,7 +51,7 @@ export default async function DashboardPage() {
     return (
       <div className="container" style={{ paddingTop: 30, paddingBottom: 40 }}>
         <div className="card-header"><h1>Dashboard</h1><span className={'role-header ' + user.role}>{roleLabelStr}</span></div>
-        {cookieTampered && <div style={{ color: '#2ecc71', fontWeight: 600, marginBottom: 12 }}>FLAG{c00ki3_m0nst3r}</div>}
+        {cookieTampered && <div style={{ color: '#2ecc71', fontWeight: 600, marginBottom: 12 }}>{'FLAG{c00ki3_m0nst3r}'}</div>}
         <div className="grid-3">
           <div className="card stat-card"><div className="stat-value">{tu}</div><div className="stat-label">System Users</div></div>
           <div className="card stat-card"><div className="stat-value">{tc}</div><div className="stat-label">Courses</div></div>
@@ -79,7 +79,7 @@ export default async function DashboardPage() {
     return (
       <div className="container" style={{ paddingTop: 30, paddingBottom: 40 }}>
         <div className="card-header"><h1>Dashboard</h1><span className={'role-header ' + user.role}>{roleLabelStr}</span></div>
-        {cookieTampered && <div style={{ color: '#2ecc71', fontWeight: 600, marginBottom: 12 }}>FLAG{c00ki3_m0nst3r}</div>}
+        {cookieTampered && <div style={{ color: '#2ecc71', fontWeight: 600, marginBottom: 12 }}>{'FLAG{c00ki3_m0nst3r}'}</div>}
         <div className="grid-3">
           <div className="card stat-card"><div className="stat-value">{ts}</div><div className="stat-label">Students</div></div>
           <div className="card stat-card"><div className="stat-value">{tl}</div><div className="stat-label">Lecturers</div></div>
@@ -105,7 +105,7 @@ export default async function DashboardPage() {
   return (
     <div className="container" style={{ paddingTop: 30, paddingBottom: 40 }}>
       <div className="card-header"><h1>Dashboard</h1><span className={'role-header ' + user.role}>{roleLabelStr}</span></div>
-      {cookieTampered && <div style={{ color: '#2ecc71', fontWeight: 600, marginBottom: 12 }}>FLAG{c00ki3_m0nst3r}</div>}
+      {cookieTampered && <div style={{ color: '#2ecc71', fontWeight: 600, marginBottom: 12 }}>{'FLAG{c00ki3_m0nst3r}'}</div>}
 
       {user.role === 'student' && (
         <div className="grid-2">
