@@ -1,0 +1,180 @@
+================================================================
+  SPRINGFIELD STATE UNIVERSITY PORTAL — SETUP WALKTHROUGH
+================================================================
+
+This is a deliberately vulnerable Next.js app hosted on Vercel
+with Supabase PostgreSQL as the database backend. It demonstrates
+OWASP Top 10 vulnerabilities A01, A02, and A07 for security
+education.
+
+================================================================
+1. CREATE A SUPABASE PROJECT
+================================================================
+
+  1. Go to https://supabase.com and sign up / sign in
+  2. Click "New project"
+  3. Name: "ssu-portal" (or any name you like)
+  4. Set a secure database password (save it somewhere)
+  5. Region: choose one closest to you
+  6. Click "Create new project" (takes ~1-2 minutes)
+
+================================================================
+2. RUN THE SCHEMA + SEED SQL
+================================================================
+
+  In your Supabase dashboard:
+    → Go to "SQL Editor" (left sidebar)
+    → Click "New query"
+    → Open the file  supabase/schema.sql  from this project
+    → Paste and RUN it
+    → Open the file  supabase/seed.sql  from this project
+    → Paste and RUN it
+
+  This creates the tables and seeds them with demo data.
+
+================================================================
+3. GET YOUR API CREDENTIALS
+================================================================
+
+  In your Supabase dashboard:
+    → Go to "Project Settings" → "API"
+    → Copy the "Project URL" (looks like https://xxxxx.supabase.co)
+    → Copy the "anon public" key (starts with eyJ...)
+
+================================================================
+4. SET UP ENVIRONMENT VARIABLES
+================================================================
+
+  Rename .env.local.example to .env.local and fill in your values:
+
+    NEXT_PUBLIC_SUPABASE_URL=https://your-project-id.supabase.co
+    NEXT_PUBLIC_SUPABASE_ANON_KEY=your-anon-key-here
+
+================================================================
+5. RUN LOCALLY
+================================================================
+
+    npm run dev
+
+  The app runs at http://localhost:3000
+
+================================================================
+6. DEPLOY TO VERCEL
+================================================================
+
+  1. Push this project to a Git repository (GitHub/GitLab)
+  2. Go to https://vercel.com and import the repository
+  3. Add these environment variables in Vercel project settings:
+       - NEXT_PUBLIC_SUPABASE_URL
+       - NEXT_PUBLIC_SUPABASE_ANON_KEY
+  4. Deploy — Vercel auto-detects Next.js
+
+================================================================
+7. DEFAULT ACCOUNTS
+================================================================
+
+  Admin:      admin / admin123
+  VC:         vc / vc123
+  IT Staff:   it_staff / it123
+  Lecturers:  dr_williams / lecturer123
+              dr_chen / chen123
+              prof_miller / miller123
+  Students:   jdoe / password123
+              jsmith / password123
+
+  New users can register at /register
+
+================================================================
+8. VULNERABILITIES (for security education)
+================================================================
+
+  A01 - Broken Access Control:
+    • IDOR: /profile/:id, /grades/:id, /transcript/:id — view ANY user
+    • No role checks on /admin, /it/dashboard, /lecturer/grades
+    • Mass assignment on profile edit — change 'role' to escalate
+    • Open API: /api/users, /api/courses, /api/enrollments (no auth)
+
+  A02 - Cryptographic Failures:
+    • MD5 password hashing (intentionally weak)
+    • Plaintext passwords in plain_password column
+    • All credentials leaked in /robots.txt
+    • Weak JWT secret: 'spr1ngf13ld_s3ss10n'
+
+  A07 - Identification & Auth Failures:
+    • Hardcoded JWT secret (forgeable tokens)
+    • httpOnly:false cookies (XSS can steal tokens)
+    • Remember-me cookie = base64(userId) (trivially forgeable)
+    • No rate limiting on login
+    • Predictable password reset tokens (MD5 + timestamp)
+
+  Extra:
+    • /.env — fake environment variables exposed
+    • /backup/config.json — backup codes
+    • /session — session info leak
+    • /secret — hidden directory hint
+
+================================================================
+9. ROUTE MAP
+================================================================
+
+  Public pages:
+    /                    Home
+    /about               About the university
+    /academics           Academic programs
+    /research            Research centers
+    /news                News & announcements
+    /library             Library resources
+    /campus-map          Campus map
+    /contact             Contact information
+    /privacy             Privacy policy
+    /terms               Terms of use
+    /accessibility       Accessibility statement
+
+  Auth pages:
+    /login               Login form
+    /register            Account registration
+    /forgot-password     Password reset request
+    /reset-password/:token  Password reset form
+
+  Authenticated pages:
+    /dashboard           Role-based dashboard
+    /profile/:id         View profile (IDOR)
+    /profile/:id/edit    Edit profile (mass assignment)
+    /grades/:id          View grades (IDOR)
+    /transcript/:id      View + edit transcript (IDOR)
+    /courses             Course catalog
+    /courses/enroll/:id  Enroll in a course
+
+  Privileged pages (no role check):
+    /admin               Admin panel
+    /it/dashboard        IT dashboard
+    /lecturer/grades     Grade management
+
+  Vulnerable endpoints:
+    /robots.txt          Credential leak
+    /.env                Environment leak
+    /backup/config.json  Backup config leak
+    /backup/             Backup directory
+    /secret/             Hidden directory
+    /session             Session info
+    /api/users           All users (no auth)
+    /api/courses         All courses (no auth)
+    /api/enrollments     All enrollments (no auth)
+
+================================================================
+10. FILE STRUCTURE
+================================================================
+
+  siwess/
+    .env.local              ← YOUR Supabase credentials
+    .env.local.example      ← Template for env vars
+    next.config.js          ← Next.js config with rewrites
+    vercel.json             ← Vercel deployment config
+    package.json            ← Dependencies
+    supabase/
+      schema.sql            ← Database tables
+      seed.sql              ← Demo data
+    app/                    ← Next.js App Router pages
+    components/             ← React components
+    lib/                    ← Helpers (supabase, auth, md5, b64)
+================================================================

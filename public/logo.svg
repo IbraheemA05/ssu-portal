@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 44" width="220" height="44">
+  <rect x="2" y="2" width="40" height="40" rx="4" fill="#8b1e2b"/>
+  <polygon points="22,8 36,20 32,34 22,40 12,34 8,20" fill="#c8a84e"/>
+  <text x="22" y="29" text-anchor="middle" font-family="Georgia,serif" font-size="14" font-weight="bold" fill="#0a1628">SS</text>
+  <text x="52" y="22" font-family="Georgia,serif" font-size="16" font-weight="bold" fill="#0a1628">Springfield State</text>
+  <text x="52" y="37" font-family="Georgia,serif" font-size="11" fill="#8b1e2b" letter-spacing="1.5">UNIVERSITY</text>
+</svg>

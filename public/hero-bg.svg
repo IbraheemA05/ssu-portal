@@ -1,0 +1,92 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600" width="1200" height="600">
+  <!-- Sky gradient -->
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1a3a6b"/>
+      <stop offset="100%" stop-color="#3a6ba0"/>
+    </linearGradient>
+    <linearGradient id="building" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#4a6a8a"/>
+      <stop offset="100%" stop-color="#2a4a6a"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="600" fill="url(#sky)"/>
+  <!-- Clouds -->
+  <ellipse cx="200" cy="80" rx="80" ry="25" fill="rgba(255,255,255,0.08)"/>
+  <ellipse cx="220" cy="85" rx="60" ry="20" fill="rgba(255,255,255,0.06)"/>
+  <ellipse cx="800" cy="60" rx="100" ry="30" fill="rgba(255,255,255,0.07)"/>
+  <ellipse cx="830" cy="70" rx="70" ry="22" fill="rgba(255,255,255,0.05)"/>
+  <ellipse cx="500" cy="100" rx="60" ry="18" fill="rgba(255,255,255,0.04)"/>
+  <!-- Main building -->
+  <rect x="350" y="180" width="500" height="320" fill="#3a5a7a" rx="2"/>
+  <rect x="370" y="200" width="460" height="280" fill="#4a6a8a"/>
+  <!-- Columns -->
+  <rect x="390" y="200" width="8" height="280" fill="#5a7a9a"/>
+  <rect x="430" y="200" width="8" height="280" fill="#5a7a9a"/>
+  <rect x="470" y="200" width="8" height="280" fill="#5a7a9a"/>
+  <rect x="510" y="200" width="8" height="280" fill="#5a7a9a"/>
+  <rect x="550" y="200" width="8" height="280" fill="#5a7a9a"/>
+  <rect x="590" y="200" width="8" height="280" fill="#5a7a9a"/>
+  <rect x="630" y="200" width="8" height="280" fill="#5a7a9a"/>
+  <rect x="670" y="200" width="8" height="280" fill="#5a7a9a"/>
+  <rect x="710" y="200" width="8" height="280" fill="#5a7a9a"/>
+  <rect x="750" y="200" width="8" height="280" fill="#5a7a9a"/>
+  <rect x="790" y="200" width="8" height="280" fill="#5a7a9a"/>
+  <!-- Pediment -->
+  <polygon points="350,180 600,100 850,180" fill="#2a4a6a"/>
+  <polygon points="360,180 600,108 840,180" fill="#3a5a7a"/>
+  <!-- Dome -->
+  <ellipse cx="600" cy="100" rx="40" ry="30" fill="#4a6a8a"/>
+  <ellipse cx="600" cy="100" rx="30" ry="22" fill="#5a7a9a"/>
+  <!-- Windows row 1 -->
+  <rect x="420" y="240" width="30" height="40" rx="15" ry="15" fill="#8ab4d4" opacity="0.6"/>
+  <rect x="500" y="240" width="30" height="40" rx="15" ry="15" fill="#8ab4d4" opacity="0.6"/>
+  <rect x="580" y="240" width="30" height="40" rx="15" ry="15" fill="#8ab4d4" opacity="0.6"/>
+  <rect x="660" y="240" width="30" height="40" rx="15" ry="15" fill="#8ab4d4" opacity="0.6"/>
+  <rect x="740" y="240" width="30" height="40" rx="15" ry="15" fill="#8ab4d4" opacity="0.5"/>
+  <!-- Windows row 2 -->
+  <rect x="420" y="310" width="30" height="40" rx="15" ry="15" fill="#8ab4d4" opacity="0.5"/>
+  <rect x="500" y="310" width="30" height="40" rx="15" ry="15" fill="#8ab4d4" opacity="0.6"/>
+  <rect x="580" y="310" width="30" height="40" rx="15" ry="15" fill="#8ab4d4" opacity="0.5"/>
+  <rect x="660" y="310" width="30" height="40" rx="15" ry="15" fill="#8ab4d4" opacity="0.6"/>
+  <rect x="740" y="310" width="30" height="40" rx="15" ry="15" fill="#8ab4d4" opacity="0.5"/>
+  <!-- Door -->
+  <rect x="565" y="380" width="70" height="100" rx="35" ry="20" fill="#1a2a3a"/>
+  <rect x="570" y="385" width="60" height="90" rx="30" ry="15" fill="#2a3a4a"/>
+  <!-- Left wing -->
+  <rect x="100" y="280" width="230" height="220" fill="#3a5a7a" rx="2"/>
+  <rect x="110" y="290" width="210" height="200" fill="#4a6a8a"/>
+  <rect x="130" y="310" width="25" height="35" rx="12" ry="12" fill="#8ab4d4" opacity="0.5"/>
+  <rect x="170" y="310" width="25" height="35" rx="12" ry="12" fill="#8ab4d4" opacity="0.5"/>
+  <rect x="210" y="310" width="25" height="35" rx="12" ry="12" fill="#8ab4d4" opacity="0.5"/>
+  <rect x="250" y="310" width="25" height="35" rx="12" ry="12" fill="#8ab4d4" opacity="0.5"/>
+  <rect x="130" y="370" width="25" height="35" rx="12" ry="12" fill="#8ab4d4" opacity="0.5"/>
+  <rect x="170" y="370" width="25" height="35" rx="12" ry="12" fill="#8ab4d4" opacity="0.5"/>
+  <rect x="210" y="370" width="25" height="35" rx="12" ry="12" fill="#8ab4d4" opacity="0.5"/>
+  <rect x="250" y="370" width="25" height="35" rx="12" ry="12" fill="#8ab4d4" opacity="0.5"/>
+  <!-- Right wing -->
+  <rect x="870" y="280" width="230" height="220" fill="#3a5a7a" rx="2"/>
+  <rect x="880" y="290" width="210" height="200" fill="#4a6a8a"/>
+  <rect x="900" y="310" width="25" height="35" rx="12" ry="12" fill="#8ab4d4" opacity="0.5"/>
+  <rect x="940" y="310" width="25" height="35" rx="12" ry="12" fill="#8ab4d4" opacity="0.5"/>
+  <rect x="980" y="310" width="25" height="35" rx="12" ry="12" fill="#8ab4d4" opacity="0.5"/>
+  <rect x="1020" y="310" width="25" height="35" rx="12" ry="12" fill="#8ab4d4" opacity="0.5"/>
+  <rect x="900" y="370" width="25" height="35" rx="12" ry="12" fill="#8ab4d4" opacity="0.5"/>
+  <rect x="940" y="370" width="25" height="35" rx="12" ry="12" fill="#8ab4d4" opacity="0.5"/>
+  <rect x="980" y="370" width="25" height="35" rx="12" ry="12" fill="#8ab4d4" opacity="0.5"/>
+  <rect x="1020" y="370" width="25" height="35" rx="12" ry="12" fill="#8ab4d4" opacity="0.5"/>
+  <!-- Ground -->
+  <rect x="0" y="500" width="1200" height="100" fill="#1a3a2a" opacity="0.4"/>
+  <!-- Lawn -->
+  <ellipse cx="600" cy="520" rx="500" ry="40" fill="#2a5a3a" opacity="0.3"/>
+  <!-- Trees left -->
+  <circle cx="50" cy="380" r="40" fill="#2a5a3a" opacity="0.3"/>
+  <circle cx="70" cy="370" r="35" fill="#3a6a4a" opacity="0.25"/>
+  <circle cx="40" cy="400" r="25" fill="#2a5a3a" opacity="0.2"/>
+  <!-- Trees right -->
+  <circle cx="1150" cy="380" r="40" fill="#2a5a3a" opacity="0.3"/>
+  <circle cx="1130" cy="370" r="35" fill="#3a6a4a" opacity="0.25"/>
+  <circle cx="1160" cy="400" r="25" fill="#2a5a3a" opacity="0.2"/>
+  <!-- Path -->
+  <path d="M570 500 Q600 520 600 600" stroke="#4a6a5a" stroke-width="40" fill="none" opacity="0.2"/>
+</svg>

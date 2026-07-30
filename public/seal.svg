@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#fff"/>
+      <stop offset="100%" stop-color="#f5f5f0"/>
+    </radialGradient>
+  </defs>
+  <circle cx="100" cy="100" r="96" fill="#0a1628" stroke="#8b1e2b" stroke-width="3"/>
+  <circle cx="100" cy="100" r="88" fill="none" stroke="#c8a84e" stroke-width="1.5"/>
+  <circle cx="100" cy="100" r="82" fill="url(#bg)"/>
+  <text x="100" y="38" text-anchor="middle" font-family="Georgia,serif" font-size="10" font-weight="bold" fill="#8b1e2b" letter-spacing="1.5">SPRINGFIELD</text>
+  <text x="100" y="48" text-anchor="middle" font-family="Georgia,serif" font-size="8" fill="#8b1e2b" letter-spacing="3">STATE</text>
+  <text x="100" y="56" text-anchor="middle" font-family="Georgia,serif" font-size="7" fill="#8b1e2b" letter-spacing="2">UNIVERSITY</text>
+  <line x1="50" y1="62" x2="150" y2="62" stroke="#c8a84e" stroke-width="0.8"/>
+  <polygon points="100,68 125,90 118,118 100,128 82,118 75,90" fill="#0a1628" stroke="#c8a84e" stroke-width="1.2"/>
+  <polygon points="100,74 119,91 114,114 100,122 86,114 81,91" fill="#8b1e2b"/>
+  <text x="100" y="108" text-anchor="middle" font-family="Georgia,serif" font-size="20" font-weight="bold" fill="#c8a84e">1932</text>
+  <line x1="55" y1="133" x2="145" y2="133" stroke="#c8a84e" stroke-width="0.8"/>
+  <text x="100" y="148" text-anchor="middle" font-family="Georgia,serif" font-size="8" fill="#0a1628" letter-spacing="1">VERITAS ET</text>
+  <text x="100" y="157" text-anchor="middle" font-family="Georgia,serif" font-size="8" fill="#0a1628" letter-spacing="1">SCIENTIA</text>
+  <line x1="55" y1="163" x2="145" y2="163" stroke="#c8a84e" stroke-width="0.8"/>
+  <g fill="#c8a84e" opacity="0.6">
+    <path d="M25 100 Q30 85 40 90 L38 95 Q30 92 28 100 Z"/>
+    <path d="M175 100 Q170 85 160 90 L162 95 Q170 92 172 100 Z"/>
+    <path d="M100 175 Q85 170 90 160 L95 162 Q92 170 100 172 Z"/>
+    <path d="M100 25 Q85 30 90 40 L95 38 Q92 30 100 28 Z"/>
+  </g>
+</svg>
