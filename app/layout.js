@@ -3,6 +3,7 @@ import TopBar from '../components/TopBar';
 import NavBar from '../components/NavBar';
 import Footer from '../components/Footer';
 import { getCurrentUser } from '../lib/getUser';
+import { Analytics } from '@vercel/analytics/next';
 
 export const metadata = {
   title: 'Springfield State University — Excellence in Education Since 1932',
@@ -19,6 +20,7 @@ export default async function RootLayout({ children }) {
         <NavBar user={user} />
         {children}
         <Footer />
+        <Analytics />
       </body>
     </html>
   );
