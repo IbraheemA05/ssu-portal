@@ -24,16 +24,20 @@ export async function POST(request) {
     return NextResponse.redirect(new URL('/register?error=Username+taken', request.url));
   }
 
-  const { data: newUser } = await supabase
+  const { data: inserted, error: insertError } = await supabase
     .from('users')
     .insert({
       username, password: md5(password), plain_password: password, role: 'student',
       email, full_name: fullName,
       major: 'Undeclared', year: 'Freshman', gpa: 0.0, ssn: '', dob: '', address: '',
     })
-    .select()
-    .single();
+    .select();
 
+  if (insertError || !inserted || inserted.length === 0) {
+    return new Response('Insert failed: ' + (insertError?.message || 'unknown'), { status: 500 });
+  }
+
+  const newUser = inserted[0];
   await supabase.from('users').update({ student_id: 'STU-' + newUser.id }).eq('id', newUser.id);
 
   const token = signToken({ userId: newUser.id, role: newUser.role });
