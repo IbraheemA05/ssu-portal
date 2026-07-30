@@ -22,8 +22,8 @@ export async function POST(request) {
     .from('reset_tokens')
     .insert({ token, user_id: user.id });
 
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000';
-  const resetLink = `${baseUrl}/reset-password/${token}`;
+  const origin = new URL(request.url).origin;
+  const resetLink = `${origin}/reset-password/${token}`;
 
   return NextResponse.redirect(
     new URL('/forgot-password?success=Reset+link%3A+<a+href%3D"' + encodeURIComponent(resetLink) + '">' + encodeURIComponent(resetLink) + '</a>', request.url)
