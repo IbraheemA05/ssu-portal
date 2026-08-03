@@ -113,7 +113,12 @@ education.
       — requires re-running supabase/schema.sql to create it
     • Command injection in network diagnostics (/api/ping?host=)
       — input concatenated into `ping -c 4 <input>`;
-      flag in lib/flag-cmd.txt, read via `; cat lib/flag-cmd.txt`
+      flag in lib/flag-cmd.txt (local) or CMD_INJ_FLAG env (serverless),
+      read via `; cat lib/flag-cmd.txt` / `; env | grep -i flag`
+    • Stored XSS in announcements (/announcements) — admin publishes
+      announcement, body rendered with dangerouslySetInnerHTML;
+      exfiltrate session token to /api/xss-receiver
+    • Reflected XSS in /forgot-password?success= (dangerouslySetInnerHTML)
 
   Extra:
     • /.env — fake environment variables exposed
@@ -153,6 +158,7 @@ education.
     /courses             Course catalog
     /courses/enroll/:id  Enroll in a course
     /ping                Network diagnostics (command injection)
+    /announcements       Public announcements (stored XSS)
 
   Privileged pages (no role check):
     /admin               Admin panel

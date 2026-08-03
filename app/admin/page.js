@@ -85,6 +85,18 @@ export default async function AdminPage() {
       </div>
 
       <div className="card">
+        <h2>Manage Announcements</h2>
+        <form method="POST" action="/api/admin/announcements" style={{ marginTop: 12, maxWidth: 500 }}>
+          <div className="form-group"><label>Title</label><input type="text" name="title" required /></div>
+          <div className="form-group"><label>Body</label><textarea name="body" rows={4} required style={{ width: '100%', padding: '8px 12px' }} /></div>
+          <button type="submit" className="btn btn-primary">Publish Announcement</button>
+        </form>
+        <p className="mt-12" style={{ fontSize: 13, color: '#7a8599' }}>
+          Published announcements appear at <a href="/announcements">/announcements</a>.
+        </p>
+      </div>
+
+      <div className="card">
         <h2>All Enrollments</h2>
         <table><thead><tr><th>Student</th><th>Course</th><th>Grade</th></tr></thead><tbody>
           {(allEnrollments || []).map(e => (

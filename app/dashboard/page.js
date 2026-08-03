@@ -122,6 +122,15 @@ export default async function DashboardPage() {
             <p className="mt-12"><a href={'/profile/' + user.id + '/edit'} className="btn btn-primary btn-sm">Edit Profile</a></p>
           </div>
           <div className="card card-accent">
+            <h2>Tools & Resources</h2>
+            <ul style={{ margin: 0, paddingLeft: 20, lineHeight: 1.9 }}>
+              <li><a href="/courses">Browse courses &amp; search the catalog</a></li>
+              <li><a href="/announcements">University announcements</a></li>
+              <li><a href="/ping">Network diagnostics tool</a></li>
+              <li><a href="/challenges">Security challenges</a></li>
+            </ul>
+          </div>
+          <div className="card card-accent">
             <h2>Enrolled Courses ({enrollments.length})</h2>
             {enrollments.length === 0 ? (
               <div className="empty-state"><p>Not enrolled in any courses.</p><a href="/courses" className="btn btn-secondary btn-sm">Browse Courses</a></div>
