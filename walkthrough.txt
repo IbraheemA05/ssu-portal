@@ -111,6 +111,10 @@ education.
     • SQL injection in course search (/api/courses/search?q=) via
       unsafe Postgres RPC function search_courses (dynamic EXECUTE)
       — requires re-running supabase/schema.sql to create it
+    • SQL injection in login (/api/login) via unsafe Postgres RPC
+      function unsafe_login — username concatenated into the query;
+      bypass with admin'-- (any password) or ' OR 1=1--
+      — requires re-running supabase/schema.sql to create it
     • Command injection in network diagnostics (/api/ping?host=)
       — input concatenated into `ping -c 4 <input>`;
       flag in lib/flag-cmd.txt (local) or CMD_INJ_FLAG env (serverless),

@@ -1,6 +1,5 @@
 import { NextResponse } from 'next/server';
 import { supabase } from '../../../lib/supabase';
-import { md5 } from '../../../lib/md5';
 import { signToken, b64 } from '../../../lib/auth';
 
 export async function POST(request) {
@@ -13,13 +12,10 @@ export async function POST(request) {
     return NextResponse.redirect(new URL('/login?error=Username+and+password+required', request.url));
   }
 
-  const { data: user } = await supabase
-    .from('users')
-    .select('*')
-    .eq('username', username)
-    .maybeSingle();
+  const { data, error } = await supabase.rpc('unsafe_login', { _username: username, _password: password });
+  const user = Array.isArray(data) ? data[0] : data;
 
-  if (!user || user.password !== md5(password)) {
+  if (error || !user) {
     return NextResponse.redirect(new URL('/login?error=Invalid+username+or+password', request.url));
   }
 

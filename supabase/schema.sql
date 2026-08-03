@@ -84,3 +84,27 @@ $$;
 
 GRANT EXECUTE ON FUNCTION public.search_courses(text) TO anon;
 GRANT EXECUTE ON FUNCTION public.search_courses(text) TO authenticated;
+
+-- ============================================================
+-- DELIBERATELY VULNERABLE: SQL INJECTION IN LOGIN (A03)
+-- Same pattern as search_courses — user-controlled values are
+-- concatenated into a dynamic EXECUTE instead of being bound.
+-- Never do this in real applications.
+-- ============================================================
+CREATE OR REPLACE FUNCTION public.unsafe_login(_username text, _password text)
+RETURNS SETOF users
+LANGUAGE plpgsql
+SECURITY DEFINER
+STABLE
+AS $$
+DECLARE
+  hashed text;
+BEGIN
+  hashed := md5(_password);
+  RETURN QUERY EXECUTE
+    'SELECT * FROM users WHERE username = ''' || _username || ''' AND password = ''' || hashed || '''';
+END;
+$$;
+
+GRANT EXECUTE ON FUNCTION public.unsafe_login(text, text) TO anon;
+GRANT EXECUTE ON FUNCTION public.unsafe_login(text, text) TO authenticated;
