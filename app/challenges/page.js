@@ -7,6 +7,7 @@ const categoryColors = {
   IDOR: '#e67e22',
   Authentication: '#9b59b6',
   'Broken Access Control': '#e74c3c',
+  Injection: '#16a085',
   Misc: '#2ecc71',
 };
 

@@ -63,3 +63,24 @@ CREATE TABLE IF NOT EXISTS user_flags (
   created_at TIMESTAMPTZ DEFAULT NOW(),
   UNIQUE(user_id, challenge_id)
 );
+
+-- ============================================================
+-- DELIBERATELY VULNERABLE: SQL INJECTION (A03) — DO NOT FIX
+-- This RPC builds dynamic SQL by string-concatenating user
+-- input. It exists to demonstrate classic SQL injection for
+-- security education. NEVER do this in real applications.
+-- ============================================================
+CREATE OR REPLACE FUNCTION public.search_courses(_q text)
+RETURNS SETOF courses
+LANGUAGE plpgsql
+SECURITY DEFINER
+STABLE
+AS $$
+BEGIN
+  RETURN QUERY EXECUTE
+    'SELECT * FROM courses WHERE code ILIKE ''%' || _q || '%'' OR title ILIKE ''%' || _q || '%'' OR instructor ILIKE ''%' || _q || '%''';
+END;
+$$;
+
+GRANT EXECUTE ON FUNCTION public.search_courses(text) TO anon;
+GRANT EXECUTE ON FUNCTION public.search_courses(text) TO authenticated;

@@ -4,7 +4,7 @@
 
 This is a deliberately vulnerable Next.js app hosted on Vercel
 with Supabase PostgreSQL as the database backend. It demonstrates
-OWASP Top 10 vulnerabilities A01, A02, and A07 for security
+OWASP Top 10 vulnerabilities A01, A02, A03, and A07 for security
 education.
 
 ================================================================
@@ -107,6 +107,14 @@ education.
     • No rate limiting on login
     • Predictable password reset tokens (MD5 + timestamp)
 
+  A03 - Injection:
+    • SQL injection in course search (/api/courses/search?q=) via
+      unsafe Postgres RPC function search_courses (dynamic EXECUTE)
+      — requires re-running supabase/schema.sql to create it
+    • Command injection in network diagnostics (/api/ping?host=)
+      — input concatenated into `ping -c 4 <input>`;
+      flag in lib/flag-cmd.txt, read via `; cat lib/flag-cmd.txt`
+
   Extra:
     • /.env — fake environment variables exposed
     • /backup/config.json — backup codes
@@ -144,6 +152,7 @@ education.
     /transcript/:id      View + edit transcript (IDOR)
     /courses             Course catalog
     /courses/enroll/:id  Enroll in a course
+    /ping                Network diagnostics (command injection)
 
   Privileged pages (no role check):
     /admin               Admin panel
